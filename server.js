@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 var path = require("path");
 
 //If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
 
 //Connect to the Mongo DB
 mongoose.connect(MONGODB_URI);
@@ -20,7 +20,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Requiring our routes
 require("./routes/html-routes.js")(app);
